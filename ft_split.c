@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:52:50 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/07/29 08:19:10 by kalshaer         ###   ########.fr       */
+/*   Updated: 2022/07/31 23:00:06 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,9 @@ static size_t	countw(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+static char **min (char const *s, char c, char **r, int i)
 {
-	char	**r;
 	size_t	len;
-	int		i;
-
-	r = (char **)malloc((countw(s, c) + 1) * sizeof(char *));
-	if (!s || !r)
-		return (0);
-	i = 0;
 	while (*s)
 	{
 		while (*s == c && *s)
@@ -56,6 +49,34 @@ char	**ft_split(char const *s, char c)
 		}
 	}
 	r[i] = NULL;
+	return (r);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**r;
+	int		i;
+
+	r = (char **)malloc((countw(s, c) + 1) * sizeof(char *));
+	if (!s || !r)
+		return (0);
+	i = 0;
+	r = min (s, c, r, i);
+	// while (*s)
+	// {
+	// 	while (*s == c && *s)
+	// 		s++;
+	// 	if (*s)
+	// 	{
+	// 		if (!ft_strchr(s, c))
+	// 			len = ft_strlen(s);
+	// 		else
+	// 			len = ft_strchr(s, c) - s;
+	// 		r[i++] = ft_substr(s, 0, len);
+	// 		s = s + len;
+	// 	}
+	// }
+	// r[i] = NULL;
 	if (!r[0])
 		free(r);
 	return (r);
