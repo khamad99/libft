@@ -6,17 +6,18 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:35:35 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/07/30 11:32:11 by kalshaer         ###   ########.fr       */
+/*   Updated: 2022/08/01 14:25:52 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 
-	if (!(str = (char *)malloc(sizeof(char) * 2)))
+	str = (char *)malloc(sizeof(char) * 2);
+	if (!str)
 		return (NULL);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
