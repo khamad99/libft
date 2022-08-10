@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:52:50 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/08/01 14:32:07 by kalshaer         ###   ########.fr       */
+/*   Updated: 2022/08/10 10:43:23 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ char	**ft_split(char const *s, char c)
 	char	**r;
 	int		i;
 
+	if (!s)
+		return (0);
 	r = (char **)malloc((countw(s, c) + 1) * sizeof(char *));
-	if (!s || !r)
+	if (!r)
 		return (0);
 	i = 0;
 	r = min (s, c, r, i);
