@@ -6,33 +6,50 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:35:35 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/08/01 14:25:52 by kalshaer         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:48:05 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	toput(char *r, long int nb, long int d)
+{
+	if (nb == 0)
+		r[0] = '0';
+	if (nb < 0)
+	{
+		r[0] = '-';
+		nb = nb * -1;
+	}
+	while (nb > 0)
+	{
+		r[d - 1] = (nb % 10) + '0';
+		nb = nb / 10;
+		d--;
+	}
+}
+
 char	*ft_itoa(int n)
 {
-	char	*str;
+	char		*r;
+	long int	d;
+	long int	i;
+	long int	nm;
 
-	str = (char *)malloc(sizeof(char) * 2);
-	if (!str)
-		return (NULL);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n < 0)
+	d = 0;
+	i = n;
+	nm = n;
+	while (i != 0)
 	{
-		str[0] = '-';
-		str[1] = '\0';
-		str = ft_strjoin(str, ft_itoa(-n));
+		i = i / 10;
+		d++;
 	}
-	else if (n >= 10)
-		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
-	else if (n < 10 && n >= 0)
-	{
-		str[0] = n + '0';
-		str[1] = '\0';
-	}
-	return (str);
+	if (n <= 0)
+		d++;
+	r = malloc(sizeof(char) * (d + 1));
+	if (!r)
+		return (0);
+	toput(r, nm, d);
+	r[d] = 0;
+	return (r);
 }

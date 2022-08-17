@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:58:42 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/07/30 11:15:49 by kalshaer         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:33:05 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	if (dstsize == 0)
 		return (ft_strlen(src));
-	else if (dstsize < ft_strlen(dst))
-		r = ft_strlen(src) + dstsize;
+	else if (dstsize <= ft_strlen(dst))
+		return (ft_strlen(src) + dstsize);
 	else
 		r = ft_strlen(src) + ft_strlen(dst);
 	i = ft_strlen(dst);

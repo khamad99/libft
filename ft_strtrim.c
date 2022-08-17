@@ -6,48 +6,32 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:09:25 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/08/01 14:28:46 by kalshaer         ###   ########.fr       */
+/*   Updated: 2022/08/17 13:39:33 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	inset(char c, char const *set)
-{
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int				i;
-	unsigned int	size;
-	char			*start;
-	char			*end;
-	char			*r;
+	char	*r;
+	int		len;
 
 	if (!s1 || !set)
 		return (0);
-	i = 0;
-	while (s1[i] && inset(s1[i], set))
-		i++;
-	start = (char *)&s1[i];
-	i = ft_strlen(s1) - 1;
-	while (i >= 0 && inset(s1[i], set))
-		i--;
-	end = (char *)&s1[i];
-	if (end == start)
-		size = 2;
-	else
-		size = end - start + 2;
-	r = malloc(sizeof(char) * size);
+	while (s1[0] && ft_strchr(set, s1[0]))
+		s1++;
+	len = ft_strlen(s1);
+	while (len && ft_strchr(set, s1[len - 1]))
+		len--;
+	r = malloc(sizeof(char) * (len + 1));
 	if (!r)
 		return (0);
-	ft_strlcpy(r, start, size);
+	r[len] = 0;
+	while (len > 0)
+	{
+		r[len - 1] = s1[len - 1];
+		len--;
+	}
 	return (r);
 }
