@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 08:35:35 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/08/17 13:48:05 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/13 07:54:49 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	}
 	if (n <= 0)
 		d++;
-	r = malloc(sizeof(char) * (d + 1));
+	r = ft_calloc((d + 1), sizeof(char));
 	if (!r)
 		return (0);
 	toput(r, nm, d);

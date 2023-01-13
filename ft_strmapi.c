@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:04:32 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/08/01 14:29:15 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/13 07:58:03 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (0);
 	len = ft_strlen(s);
-	r = (char *) malloc(sizeof(char) * (len + 1));
+	r = (char *) ft_calloc((len + 1), sizeof(char));
 	if (!r)
 		return (0);
 	i = 0;

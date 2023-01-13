@@ -6,7 +6,7 @@
 /*   By: kalshaer <kalshaer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:09:35 by kalshaer          #+#    #+#             */
-/*   Updated: 2022/08/17 13:29:25 by kalshaer         ###   ########.fr       */
+/*   Updated: 2023/01/13 07:59:42 by kalshaer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	if (len > ft_strlen(&s[start]))
 		len = ft_strlen(&s[start]);
-	r = (char *) malloc((sizeof(char) * len) + 1);
+	r = (char *) ft_calloc(len + 1, sizeof(char));
 	i = 0;
 	if (!r)
 		return (0);
